@@ -1,8 +1,9 @@
-var controller = {
+var statsFragment = {
 
     onCreate: function() { },
 
     onDeviceReady: function() {
 
     }
+
 };

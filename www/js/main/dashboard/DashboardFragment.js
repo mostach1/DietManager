@@ -1,8 +1,9 @@
-var controller = {
+var dashboardFragment = {
 
     onCreate: function() { },
 
     onDeviceReady: function() {
 
     }
+
 };
