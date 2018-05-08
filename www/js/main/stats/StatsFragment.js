@@ -1,9 +1,15 @@
 var statsFragment = {
+    navigateButton: null,
+    onCreate: function () {
+    },
 
-    onCreate: function() { },
+    onDeviceReady: function () {
+        this.navigateButton = $("#set_weight_button");
 
-    onDeviceReady: function() {
+        this.navigateButton.click(this.navigateToAddWeight.bind(this));
 
-    }
-
+    },
+    navigateToAddWeight: function () {
+        window.location.href = "/view/add_weight/addWeight.html";
+    },
 };
