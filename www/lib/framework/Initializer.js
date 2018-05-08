@@ -18,7 +18,12 @@ document.addEventListener('deviceready', function(){
         var fragmentView  = item.getAttribute("data-view");
         var fragment = fragments[fragmentName];
         fragment.onCreate();
+
         var fragmentPath = document.location.origin + fragmentView;
+        if (navigator.userAgent.indexOf('Android') > -1) {
+            fragmentPath = 'file:///android_asset/www' + fragmentView;
+        }
+
         if(fragmentName){
             var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function() {
@@ -39,3 +44,16 @@ document.addEventListener('deviceready', function(){
 
     });
 }, false);
+
+
+var navigation = {
+
+    navigateToPath : function (path) {
+        if (navigator.userAgent.indexOf('Android') > -1) {
+            window.open('file:///android_asset/www' + path)
+        } else {
+            window.location.href = path;
+        }
+    }
+
+}
