@@ -17,11 +17,11 @@ var controller = {
     },
 
     navigateToLogin: function () {
-        window.location.href = "/view/login/login.html";
+        navigation.navigateToPath( "/view/login/login.html" );
     },
 
     navigateToMain: function () {
-        window.location.href = "/view/main/main.html";
+        navigation.navigateToPath( "/view/main/main.html" );
     }
 
 };

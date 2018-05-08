@@ -31,11 +31,11 @@ var controller = {
     },
 
     navigateToRegister: function () {
-        window.location.href = "/view/register/register.html";
+        navigation.navigateToPath(  "/view/register/register.html" );
     },
 
     navigateToMain: function () {
-        window.location.href = "/view/main/main.html";
+        navigation.navigateToPath( "/view/main/main.html" );
     }
 
 };
