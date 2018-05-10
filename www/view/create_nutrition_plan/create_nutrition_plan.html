@@ -19,6 +19,24 @@
     <script type="text/javascript" src="../../js/create_nutrition_plan/CreateNutritionPlanController.js"></script>
     <script type="text/javascript" src="../../lib/framework/Initializer.js"></script>
 
+    <style type="text/css">
+
+        #day_row {
+            margin-top: 40px;
+        }
+
+        #breakfast_row {
+            margin-top: 40px;
+            padding: 0px;
+        }
+
+        #next_day_button {
+            margin-top: 40px;
+            padding: 0px;
+            width: 250px;
+        }
+
+    </style>
 </head>
 <body>
 <div class="container">
@@ -30,23 +48,65 @@
         <label for="plan_name">plan name</label>
     </div>
 
-    <h5 class="center-align"><b>MONDAY</b></h5>
+    <h5 class="center-align" id="day_row"><b>MONDAY</b></h5>
 
-    <div class="row">
-        <div class="col s10 valign-wrapper">BREAKFAST</div>
-            <div class="col s2 waves-effect red darken-1 btn" id="add_breakfast">ADD</div>
-        <div class="col s10 valign-wrapper">2ND BREAKFAST</div>
-        <div class="col s2 waves-effect red darken-1 btn">ADD</div>
-        <div class="col s10 valign-wrapper">LUNCH</div>
-        <div class="col s2 waves-effect red darken-1 btn">ADD</div>
-        <div class="col s10 valign-wrapper">DINNER</div>
-        <div class="col s2 waves-effect red darken-1 btn">ADD</div>
-        <div class="col s10 valign-wrapper">SUPPER</div>
-        <div class="col s2 waves-effect red darken-1 btn">ADD</div>
-
+    <div class="row" id="breakfast_row">
+        <div class="col s10 valign-wrapper"><h6>BREAKFAST</h6></div>
+        <div class="col s2 waves-effect red darken-1 btn" id="add_breakfast">ADD</div>
     </div>
-</div>
 
+    <div>
+        <table class="striped">
+            <thead>
+            <tr>
+                <th>Product name</th>
+                <th>QTY</th>
+                <th>Calories</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr>
+                <td>Carrot</td>
+                <td>15</td>
+                <td>387</td>
+            </tr>
+            <tr>
+                <td>CupCake</td>
+                <td>1kg</td>
+                <td>580</td>
+            </tr>
+            <tr>
+                <td>Grapes</td>
+                <td>78</td>
+                <td>456</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="row" id="breakfast_row">
+        <div class="col s10 valign-wrapper"><h6>2ND BREAKFAST</h6></div>
+        <div class="col s2 waves-effect red darken-1 btn">ADD</div>
+    </div>
+
+    <div class="row" id="breakfast_row">
+        <div class="col s10 valign-wrapper"><h6>LUNCH</h6></div>
+        <div class="col s2 waves-effect red darken-1 btn">ADD</div>
+    </div>
+
+    <div class="row" id="breakfast_row">
+        <div class="col s10 valign-wrapper"><h6>DINNER</h6></div>
+        <div class="col s2 waves-effect red darken-1 btn">ADD</div>
+    </div>
+
+    <div class="row" id="breakfast_row">
+        <div class="col s10 valign-wrapper"><h6>SUPPER</h6></div>
+        <div class="col s2 waves-effect red darken-1 btn">ADD</div>
+    </div>
+
+    <p class="center-align"><a class="waves-effect red darken-1 btn" id="next_day_button">NEXT DAY</a></p>
+</div>
 </body>
 
 </html>
