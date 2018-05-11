@@ -16,13 +16,35 @@
     <script src="../../lib/firebase/firebase.js"></script>
     <script type="text/javascript" src="../../cordova.js"></script>
     <script src="../../lib/materialize/materialize.min.js"></script>
-    <script type="text/javascript" src="../../js/create_nutrition_plan/CreateNutritionPlanController.js"></script>
+    <script type="text/javascript" src="../../js/product_detail/ProductDetailController.js"></script>
     <script type="text/javascript" src="../../lib/framework/Initializer.js"></script>
 
     <style type="text/css">
-        #obrazek{
+        #obrazek {
             height: 100px;
             width: auto;
+        }
+
+        #calories {
+            margin-top: 10px;
+        }
+
+        #quantity {
+            width: 80px;
+        }
+
+        #equal_mark {
+            width: 20px;
+            margin-top: 10px;
+            margin-right: 20px;
+        }
+
+        #kcal_word{
+            margin-top: 10px;
+        }
+
+        #add_selected_product{
+            width: 250px;
         }
     </style>
 </head>
@@ -31,8 +53,22 @@
 
     <p class="center-align">Product detail</p>
     <p class="center-align">
-    <img src="/www/img/jajko.png" alt="" class="responsive-img" id="obrazek">
+        <img src="/www/img/jajko.png" alt="" class="responsive-img" id="obrazek">
     </p>
+
+    <div><h5>Egg</h5></div>
+    Short description to be inputted here.
+
+    <div class="row">
+        <div class="input-field col s4 offset-s1">
+            <input placeholder="Quantity" id="quantity" type="text" class="validate">
+        </div>
+        <div class="col s1" id="equal_mark"><h5>=</h5></div>
+        <div class="col s2" id="calories"><h5>567</h5></div>
+        <div class="col s3" id="kcal_word"><h5><b>kcal</b></h5></div>
+    </div>
+
+    <p class="center-align"><a class="waves-effect waves-light btn" id="add_selected_product">Add product</a></p>
 
 
 </div>
