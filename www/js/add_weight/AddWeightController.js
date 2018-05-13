@@ -1,26 +1,38 @@
 var controller = {
     navigateButton: null,
+    weightInput: null,
+    dateInput: null,
+    buildChart: null,
+    backbutton:null,
+
     onCreate: function () {
     },
 
     onDeviceReady: function () {
-        $('.datepicker').pickadate({
-            selectMonths: true, // Creates a dropdown to control month
-            selectYears: 15, // Creates a dropdown of 15 years to control year,
-            today: 'Today',
-            clear: 'Clear',
-            close: 'Ok',
-            closeOnSelect: false // Close upon selecting a date,
-        });
 
-
+        this.dateInput = $("#date_input");
+        this.weightInput = $("#input_weight");
         this.navigateButton = $("#add_new_weight");
-
+        this.backbutton=$("#back_button");
         this.navigateButton.click(this.navigateBack.bind(this));
-
-
+        this.backbutton.click(this.onlyBack.bind(this));
     },
     navigateBack: function () {
-        window.location.href = "/view/main/main.html";
+        var userId = firebase.auth().currentUser.uid;
+        var ref = firebase.database().ref('weight/' + userId);
+        var newItem = ref.push();
+        var data = {
+            weight: controller.weightInput.val(),
+            date: controller.dateInput.val()
+        };
+        console.log(data);
+        newItem.set(data).then(function (resp) {
+            navigation.navigateToPath("/view/main/main.html");
+        });
     },
+    onlyBack: function(){
+
+      navigation.navigateToPath("/view/main/main.html");
+    },
+
 };
