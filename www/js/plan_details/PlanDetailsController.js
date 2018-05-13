@@ -2,48 +2,51 @@ var controller = {
     planID: null,
     planName: null,
     plan_link: null,
-    mondayBreakfast : null,
-    mondaySnack1 : null,
-    mondayLunch : null,
-    mondaySnack2 : null,
-    mondayDinner : null,
-    tuesdayBreakfast : null,
-    tuesdaySnack1 : null,
-    tuesdayLunch : null,
-    tuesdaySnack2 : null,
-    tuesdayDinner : null,
-    wednesdayBreakfast : null,
-    wednesdaySnack1 : null,
-    wednesdayLunch : null,
-    wednesdaySnack2 : null,
-    wednesdayDinner : null,
-    thursdayBreakfast : null,
-    thursdaySnack1 : null,
-    thursdayLunch : null,
-    thursdaySnack2 : null,
-    thursdayDinner : null,
-    fridayBreakfast : null,
-    fridaySnack1 : null,
-    fridayLunch : null,
-    fridaySnack2 : null,
-    fridayDinner : null,
-    saturdayBreakfast : null,
-    saturdaySnack1 : null,
-    saturdayLunch : null,
-    saturdaySnack2 : null,
-    saturdayDinner : null,
-    sundayBreakfast : null,
-    sundaySnack1 : null,
-    sundayLunch : null,
-    sundaySnack2 : null,
-    sundayDinner : null,
+    mondayBreakfast: null,
+    mondaySnack1: null,
+    mondayLunch: null,
+    mondaySnack2: null,
+    mondayDinner: null,
+    tuesdayBreakfast: null,
+    tuesdaySnack1: null,
+    tuesdayLunch: null,
+    tuesdaySnack2: null,
+    tuesdayDinner: null,
+    wednesdayBreakfast: null,
+    wednesdaySnack1: null,
+    wednesdayLunch: null,
+    wednesdaySnack2: null,
+    wednesdayDinner: null,
+    thursdayBreakfast: null,
+    thursdaySnack1: null,
+    thursdayLunch: null,
+    thursdaySnack2: null,
+    thursdayDinner: null,
+    fridayBreakfast: null,
+    fridaySnack1: null,
+    fridayLunch: null,
+    fridaySnack2: null,
+    fridayDinner: null,
+    saturdayBreakfast: null,
+    saturdaySnack1: null,
+    saturdayLunch: null,
+    saturdaySnack2: null,
+    saturdayDinner: null,
+    sundayBreakfast: null,
+    sundaySnack1: null,
+    sundayLunch: null,
+    sundaySnack2: null,
+    sundayDinner: null,
 
-    onCreate: function() { },
+    onCreate: function () {
+    },
 
-    onDeviceReady: function() {
+    onDeviceReady: function () {
+        var idid = localStorage.getItem("diet_offer_ID");
+
         this.planID = $("#plan_id");
         this.planName = $("#plan_name");
-        this.plan_link = $("#plan_link");
+        this.plan_link = $("#dietLink");
         this.mondayBreakfast = $("#monday_breakfast");
         this.mondaySnack1 = $("#monday_snack1");
         this.mondayLunch = $("#monday_lunch");
@@ -79,5 +82,64 @@ var controller = {
         this.sundayLunch = $("#sunday_lunch");
         this.sundaySnack2 = $("#sunday_snack2");
         this.sundayDinner = $("#sunday_dinner");
+        firebase.auth().onAuthStateChanged(function (user) {
+            profileFragment.profile_name.html(user.uid);
+            console.log(user.uid);
+            firebase.database().ref('diet_offers').once('value').then(function(snapshot) {
+                var item = snapshot.val();
+                profileFragment.test_label.html(snapshot.val());
+                controller.planID.html(idid);
+              //  document.getElementById('dietLink').src = "../../../res/dietIMG/fit.jpg";
+
+                controller.mondayBreakfast.html(item[idid].menu.mondayMenu.breakfast);
+                controller.mondaySnack1.html(item[idid].menu.mondayMenu.snack1);
+                controller.mondayLunch.html(item[idid].menu.mondayMenu.lunch);
+                controller.mondaySnack2.html(item[idid].menu.mondayMenu.snack2);
+                controller.mondayDinner.html(item[idid].menu.mondayMenu.dinner);
+
+                controller.tuesdayBreakfast.html(item[idid].menu.tuesdayMenu.breakfast);
+                controller.tuesdaySnack1.html(item[idid].menu.tuesdayMenu.snack1);
+                controller.tuesdayLunch.html(item[idid].menu.tuesdayMenu.lunch);
+                controller.tuesdaySnack2.html(item[idid].menu.tuesdayMenu.snack2);
+                controller.tuesdayDinner.html(item[idid].menu.tuesdayMenu.dinner);
+
+                controller.wednesdayBreakfast.html(item[idid].menu.wednesdayMenu.breakfast);
+                controller.wednesdaySnack1.html(item[idid].menu.wednesdayMenu.snack1);
+                controller.wednesdayLunch.html(item[idid].menu.wednesdayMenu.lunch);
+                controller.wednesdaySnack2.html(item[idid].menu.wednesdayMenu.snack2);
+                controller.wednesdayDinner.html(item[idid].menu.wednesdayMenu.dinner);
+
+                controller.thursdayBreakfast.html(item[idid].menu.thursdayMenu.breakfast);
+                controller.thursdaySnack1.html(item[idid].menu.thursdayMenu.snack1);
+                controller.thursdayLunch.html(item[idid].menu.thursdayMenu.lunch);
+                controller.thursdaySnack2.html(item[idid].menu.thursdayMenu.snack2);
+                controller.thursdayDinner.html(item[idid].menu.thursdayMenu.dinner);
+
+                controller.fridayBreakfast.html(item[idid].menu.fridayMenu.breakfast);
+                controller.fridaySnack1.html(item[idid].menu.fridayMenu.snack1);
+                controller.fridayLunch.html(item[idid].menu.fridayMenu.lunch);
+                controller.fridaySnack2.html(item[idid].menu.fridayMenu.snack2);
+                controller.fridayDinner.html(item[idid].menu.fridayMenu.dinner);
+
+                controller.saturdayBreakfast.html(item[idid].menu.saturdayMenu.breakfast);
+                controller.saturdaySnack1.html(item[idid].menu.saturdayMenu.snack1);
+                controller.saturdayLunch.html(item[idid].menu.saturdayMenu.lunch);
+                controller.saturdaySnack2.html(item[idid].menu.saturdayMenu.snack2);
+                controller.saturdayDinner.html(item[idid].menu.saturdayMenu.dinner);
+
+                controller.sundayBreakfast.html(item[idid].menu.sundayMenu.breakfast);
+                controller.sundaySnack1.html(item[idid].menu.sundayMenu.snack1);
+                controller.sundayLunch.html(item[idid].menu.sundayMenu.lunch);
+                controller.sundaySnack2.html(item[idid].menu.sundayMenu.snack2);
+                controller.sundayDinner.html(item[idid].menu.sundayMenu.dinner);
+            });
+        });
+
     }
+   // addToProfile : function(dietID){
+   //     var userId = firebase.auth().currentUser.uid;
+   //     firebase.database().ref('test/' + userId).set({
+   //        diet_ID: dietID
+   //     });
+   // }
 };

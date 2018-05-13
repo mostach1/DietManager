@@ -7,14 +7,14 @@
         <div class="col s12 m7">
             <div class="card">
                 <div class="card-image">
-                    <img src="../../../../res/dietIMG/fit.jpg">
+                    <img id = "diet_link1">
                 </div>
                 <div class="card-content">
-                    <p>Fit diet</p>
-                    <p>Amazing diet for you!</p>
+                    <p><span id ="diet_name1">dietName1</span></p>
+                    <p><span id ="diet_description1">dietDescription1</span></p>
                 </div>
-                <div class="card-action">
-                    <a href="../plan_datails/plan_details.html">Click here to view more</a>
+                <div class="card-action" id="plan_details_view_1">
+                    <a>Click here to view more</a>
                 </div>
             </div>
         </div>
@@ -23,14 +23,14 @@
         <div class="col s12 m7">
             <div class="card">
                 <div class="card-image">
-                    <img src="../../../../res/dietIMG/glutenFree.jpg">
+                    <img id = "diet_link2">
                 </div>
                 <div class="card-content">
-                    <p>Gluten free diet</p>
-                    <p>Amazing diet for you!</p>
+                    <p><span id ="diet_name2">dietName2</span></p>
+                    <p><span id ="diet_description2">dietDescription2</span></p>
                 </div>
-                <div class="card-action">
-                    <a href="#">Click here to view more</a>
+                <div class="card-action" id="plan_details_view_2">
+                    <a>Click here to view more</a>
                 </div>
             </div>
         </div>
@@ -39,47 +39,55 @@
         <div class="col s12 m7">
             <div class="card">
                 <div class="card-image">
-                    <img src="../../../../res/dietIMG/muscle.jpg">
+                    <img id = "diet_link3">
                 </div>
                 <div class="card-content">
-                    <p>Muscule diet</p>
-                    <p>Amazing diet for you!</p>
+                    <p><span id ="diet_name3">dietName3</span></p>
+                    <p><span id ="diet_description3">dietDescription3</span></p>
                 </div>
-                <div class="card-action">
-                    <a href="#">Click here to view more</a>
-                </div>
-            </div>
-        </div>
-
-    <div class="row">
-        <div class="col s12 m7">
-            <div class="card">
-                <div class="card-image">
-                    <img src="../../../../res/dietIMG/vegan.jpg">
-                </div>
-                <div class="card-content">
-                    <p>Vegan diet</p>
-                    <p>Amazing diet for you!</p>
-                </div>
-                <div class="card-action">
-                    <a href="#">Click here to view more</a>
-                </div>
-            </div>
-        </div>
-    <div class="row">
-        <div class="col s12 m7">
-            <div class="card">
-                <div class="card-image">
-                    <img src="../../../../res/dietIMG/vegetarian.jpg">
-                </div>
-                <div class="card-content">
-                    <p>Vegetarian diet</p>
-                    <p>Amazing diet for you!</p>
-                </div>
-                <div class="card-action">
-                    <a href="#">Click here to view more</a>
+                <div class="card-action" id="plan_details_view_3">
+                    <a>Click here to view more</a>
                 </div>
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="col s12 m7">
+            <div class="card">
+                <div class="card-image">
+                    <img id = "diet_link4">
+                </div>
+                <div class="card-content">
+                    <p><span id ="diet_name4">dietName4</span></p>
+                    <p><span id ="diet_description4">dietDescription4</span></p>
+                </div>
+                <div class="card-action" id="plan_details_view_4">
+                    <a>Click here to view more</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12 m7">
+            <div class="card">
+                <div class="card-image">
+                    <img id = "diet_link5">
+                </div>
+                <div class="card-content">
+                    <p><span id ="diet_name5">dietName5</span></p>
+                    <p><span id ="diet_description5">dietDescription5</span></p>
+                </div>
+                <div class="card-action" id="plan_details_view_5">
+                    <a>Click here to view more</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    function navigateToPlanDetails(dietID) {
+        var value = dietID;
+        localStorage.setItem("diet_offer_ID", value);
+    }
+</script>
 </body>
