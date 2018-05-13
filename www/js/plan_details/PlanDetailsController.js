@@ -37,6 +37,7 @@ var controller = {
     sundayLunch: null,
     sundaySnack2: null,
     sundayDinner: null,
+    addBtn : null,
 
     onCreate: function () {
     },
@@ -44,6 +45,7 @@ var controller = {
     onDeviceReady: function () {
         var idid = localStorage.getItem("diet_offer_ID");
 
+        this.addBtn = $("#addBtnView");
         this.planID = $("#plan_id");
         this.planName = $("#plan_name");
         this.plan_link = $("#dietLink");
@@ -82,15 +84,13 @@ var controller = {
         this.sundayLunch = $("#sunday_lunch");
         this.sundaySnack2 = $("#sunday_snack2");
         this.sundayDinner = $("#sunday_dinner");
-        firebase.auth().onAuthStateChanged(function (user) {
-            profileFragment.profile_name.html(user.uid);
-            console.log(user.uid);
-            firebase.database().ref('diet_offers').once('value').then(function(snapshot) {
-                var item = snapshot.val();
-                profileFragment.test_label.html(snapshot.val());
-                controller.planID.html(idid);
-              //  document.getElementById('dietLink').src = "../../../res/dietIMG/fit.jpg";
+        this.addBtn.click(this.addToProfile.bind(this));
 
+        firebase.auth().onAuthStateChanged(function (user) {
+                console.log(user.uid);
+                firebase.database().ref('diet_offers').once('value').then(function (snapshot) {
+                var item = snapshot.val();
+                controller.planID.html(idid);
                 controller.mondayBreakfast.html(item[idid].menu.mondayMenu.breakfast);
                 controller.mondaySnack1.html(item[idid].menu.mondayMenu.snack1);
                 controller.mondayLunch.html(item[idid].menu.mondayMenu.lunch);
@@ -131,15 +131,18 @@ var controller = {
                 controller.sundaySnack1.html(item[idid].menu.sundayMenu.snack1);
                 controller.sundayLunch.html(item[idid].menu.sundayMenu.lunch);
                 controller.sundaySnack2.html(item[idid].menu.sundayMenu.snack2);
+
                 controller.sundayDinner.html(item[idid].menu.sundayMenu.dinner);
             });
         });
+    },
 
+    addToProfile : function(){
+    //document.getElementById('addBtnView').class = "btn disabled";
+    var dietID = localStorage.getItem("diet_offer_ID");
+    var userId = firebase.auth().currentUser.uid;
+    firebase.database().ref('test/' + userId).set({
+    dietId : dietID
+});
     }
-   // addToProfile : function(dietID){
-   //     var userId = firebase.auth().currentUser.uid;
-   //     firebase.database().ref('test/' + userId).set({
-   //        diet_ID: dietID
-   //     });
-   // }
 };
