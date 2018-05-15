@@ -71,31 +71,31 @@ var dashboardFragment = {
 
         localStorage.removeItem("diet_offer_ID");
         localStorage.setItem("diet_offer_ID", "1");
-        window.location.href = "/view/plan_details/plan_details.html";
+        navigation.navigateToPath("/view/plan_details/plan_details.html");
       },
     navigateToSecondPlanDetails : function () {
 
         localStorage.removeItem("diet_offer_ID");
         localStorage.setItem("diet_offer_ID", "2");
-        window.location.href = "/view/plan_details/plan_details.html";
+        navigation.navigateToPath("/view/plan_details/plan_details.html");
     },
     navigateToThirdPlanDetails : function () {
 
         localStorage.removeItem("diet_offer_ID");
         localStorage.setItem("diet_offer_ID", "3");
-        window.location.href = "/view/plan_details/plan_details.html";
+        navigation.navigateToPath("/view/plan_details/plan_details.html");
     },
     navigateToFourthPlanDetails : function () {
 
         localStorage.removeItem("diet_offer_ID");
         localStorage.setItem("diet_offer_ID", "4");
-        window.location.href = "/view/plan_details/plan_details.html";
+        navigation.navigateToPath("/view/plan_details/plan_details.html");
     },
     navigateToFifthPlanDetails : function () {
 
         localStorage.removeItem("diet_offer_ID");
         localStorage.setItem("diet_offer_ID", "5");
-        window.location.href = "/view/plan_details/plan_details.html";
+        navigation.navigateToPath("/view/plan_details/plan_details.html");
     }
 
 };
