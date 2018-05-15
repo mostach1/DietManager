@@ -37,7 +37,7 @@ var controller = {
     sundayLunch: null,
     sundaySnack2: null,
     sundayDinner: null,
-    addBtn : null,
+    addBtn: null,
 
     onCreate: function () {
     },
@@ -85,10 +85,38 @@ var controller = {
         this.sundaySnack2 = $("#sunday_snack2");
         this.sundayDinner = $("#sunday_dinner");
         this.addBtn.click(this.addToProfile.bind(this));
+        if (navigator.userAgent.indexOf('Android') > -1) {
+            if (idid == 1)
+                document.getElementById('img_id').src = "file:///android_asset/www/img/glutenFree.jpg";
+            else if (idid == 2)
+                document.getElementById('img_id').src = "file:///android_asset/www/img/fit.jpg";
+            else if (idid == 3)
+                document.getElementById('img_id').src = "file:///android_asset/www/img/muscle.jpg";
+            else if (idid == 4)
+                document.getElementById('img_id').src = "file:///android_asset/www/img/vegan.jpg";
+            else if (idid == 5)
+                document.getElementById('img_id').src = "file:///android_asset/www/img/vegetarian.jpg";
+            else
+                document.getElementById('img_id').src = "file:///android_asset/www/img/nutrition.jpg";
+        }
+        else {
+            if (idid == 1)
+                document.getElementById('img_id').src = "../../img/glutenFree.jpg";
+            else if (idid == 2)
+                document.getElementById('img_id').src = "../../img/fit.jpg";
+            else if (idid == 3)
+                document.getElementById('img_id').src = "../../img/muscle.jpg";
+            else if (idid == 4)
+                document.getElementById('img_id').src = "../../img/vegan.jpg";
+            else if (idid == 5)
+                document.getElementById('img_id').src = "../../img/vegetarian.jpg";
+            else
+                document.getElementById('img_id').src = "../../img/nutrition.jpg";
+        }
 
         firebase.auth().onAuthStateChanged(function (user) {
-                console.log(user.uid);
-                firebase.database().ref('diet_offers').once('value').then(function (snapshot) {
+            console.log(user.uid);
+            firebase.database().ref('diet_offers').once('value').then(function (snapshot) {
                 var item = snapshot.val();
                 controller.planID.html(idid);
                 controller.mondayBreakfast.html(item[idid].menu.mondayMenu.breakfast);
@@ -137,12 +165,22 @@ var controller = {
         });
     },
 
-    addToProfile : function(){
-    //document.getElementById('addBtnView').class = "btn disabled";
-    var dietID = localStorage.getItem("diet_offer_ID");
-    var userId = firebase.auth().currentUser.uid;
-    firebase.database().ref('test/' + userId).set({
-    dietId : dietID
-});
+    addToProfile: function () {
+        var dietID = localStorage.getItem("diet_offer_ID");
+        var userId = firebase.auth().currentUser.uid;
+
+        firebase.database().ref('test/' + userId).once('value').then(function (snapshot) {
+            var item = snapshot.val();
+            var dietFromdb = item.dietId;
+            console.log(dietFromdb);
+            if (dietFromdb == dietID) {
+                document.getElementById('mssDiv').style.display = "block";
+            }
+            else {
+                firebase.database().ref('test/' + userId).set({
+                    dietId: dietID
+                });
+            }
+        });
     }
 };

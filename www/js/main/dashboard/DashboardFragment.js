@@ -31,14 +31,24 @@ var dashboardFragment = {
         this.dietName3 = $("#diet_name3"),
         this.dietName4 = $("#diet_name4"),
         this.dietName5 = $("#diet_name5"),
-            this.dietDescription3 = $("#diet_description3"),
-            this.dietDescription4 = $("#diet_description4"),
-            this.dietDescription5 = $("#diet_description5"),
-        document.getElementById('diet_link1').src = "../../../../res/dietIMG/glutenFree.jpg";
-        document.getElementById('diet_link2').src = "../../../../res/dietIMG/fit.jpg";
-        document.getElementById('diet_link3').src = "../../../../res/dietIMG/muscle.jpg";
-        document.getElementById('diet_link4').src = "../../../../res/dietIMG/vegan.jpg";
-        document.getElementById('diet_link5').src = "../../../../res/dietIMG/vegetarian.jpg";
+        this.dietDescription3 = $("#diet_description3"),
+        this.dietDescription4 = $("#diet_description4"),
+        this.dietDescription5 = $("#diet_description5")
+        if (navigator.userAgent.indexOf('Android') > -1)
+        {
+            document.getElementById('diet_link1').src = "file:///android_asset/www/img/glutenFree.jpg";
+            document.getElementById('diet_link2').src = "file:///android_asset/www/img/fit.jpg";
+            document.getElementById('diet_link3').src = "file:///android_asset/www/img/muscle.jpg";
+            document.getElementById('diet_link4').src = "file:///android_asset/www/img/vegan.jpg";
+            document.getElementById('diet_link5').src = "file:///android_asset/www/img/vegetarian.jpg";
+        }
+        else {
+            document.getElementById('diet_link1').src = "../../img/glutenFree.jpg";
+            document.getElementById('diet_link2').src = "../../img/fit.jpg";
+            document.getElementById('diet_link3').src = "../../img/muscle.jpg";
+            document.getElementById('diet_link4').src = "../../img/vegan.jpg";
+            document.getElementById('diet_link5').src = "../../img/vegetarian.jpg";
+        }
 
         this.navigateToPlanDetailsView1.click(this.navigateToFirstPlanDetails.bind(this));
         this.navigateToPlanDetailsView2.click(this.navigateToSecondPlanDetails.bind(this));

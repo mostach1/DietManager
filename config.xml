@@ -17,6 +17,7 @@
     <allow-intent href="geo:*" />
     <allow-intent href="*" />
     <allow-navigation href="*" />
+    <allow-navigation href="file://*/*" />
     <platform name="android">
         <allow-intent href="market:*" />
     </platform>
