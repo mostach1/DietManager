@@ -9,7 +9,11 @@ firebase.initializeApp({
     messagingSenderId: "788592610510"
 });
 
-controller.onCreate();
+localStorage.removeItem("result");
+
+arg = localStorage.getItem("argument");
+
+controller.onCreate(arg);
 
 document.addEventListener('deviceready', function(){
     controller.onDeviceReady();
@@ -48,7 +52,10 @@ document.addEventListener('deviceready', function(){
 
 var navigation = {
 
-    navigateToPath : function (path) {
+    navigateToPath : function (path , argument) {
+        if(argument){
+            localStorage.setItem("argument", arg);
+        }
         if (navigator.userAgent.indexOf('Android') > -1) {
             window.open('file:///android_asset/www' + path)
         } else {
