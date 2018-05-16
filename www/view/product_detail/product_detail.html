@@ -21,6 +21,19 @@
     <script type="text/javascript" src="../../lib/framework/Initializer.js"></script>
 
     <style type="text/css">
+        .preloader-background {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #eee;
+
+            position: fixed;
+            z-index: 100;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
         #obrazek {
             height: 100px;
             width: auto;
@@ -50,12 +63,28 @@
     </style>
 </head>
 <body>
+
+
+<div class="preloader-background">
+    <div class="preloader-wrapper big active">
+        <div class="spinner-layer spinner-blue-only">
+            <div class="circle-clipper left">
+                <div class="circle"></div>
+            </div>
+            <div class="gap-patch">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-clipper right">
+                <div class="circle"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <div class="container">
 
     <p class="center-align">Product detail</p>
-    <p class="center-align">
-        <img id="obrazek" alt="" class="responsive-img">
-    </p>
 
     <div id="product_name"><h5>Egg</h5></div>
     Short description to be inputted here.

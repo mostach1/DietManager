@@ -1,30 +1,64 @@
 var controller = {
 
+    searchApiKey : "z9HfGMQzfhQBmeD6UvasVWC3Azf0e9lgbaqbz19K",
     addProductBtn : null,
     productName: null,
     calories: null,
     quantity: null,
     productTable: null,
-    onCreate: function() { },
+
+    productId : null,
+    productItemName : null,
+    caloriesValue : null,
+
+    onCreate: function(arg) {
+        this.productId = arg.ndbno;
+        this.productItemName = arg.name;
+    },
 
     onDeviceReady: function() {
         this.addProductBtn = $("#add_selected_product");
-        this.addProductBtn.click(this.switchToCreatePlanView);
         this.productName = $("#product_name");
         this.calories = $("#calories");
         this.quantity = $("#quantity");
         this.productTable = [];
-        if (navigator.userAgent.indexOf('Android') > -1)
-        {
-            document.getElementById('obrazek').src = "file:///android_asset/www/img/jajko.png";
-        }
-        else {
-            document.getElementById('obrazek').src = "../../www/img/jajko.png";
-        }
+        this.loadProductDetails();
+        this.addProductBtn.click(this.switchToCreatePlanView.bind(this));
+    },
+
+    loadProductDetails : function(){
+        controller.showLoader();
+        $.getJSON( "https://api.nal.usda.gov/ndb/nutrients/?format=json&api_key="+controller.searchApiKey+"&nutrients=205&nutrients=204&nutrients=208&nutrients=269&ndbno=" + controller.productId , function(data) {
+            controller.hideLoader();
+            if(data.report){
+                controller.displayProductDetails(data.report.foods[0].name);
+                controller.caloriesValue = data.report.foods[0].nutrients[0].gm;
+                controller.calories.html(controller.caloriesValue + " cal/100g");
+            }
+        }).fail(function() {
+            controller.hideLoader();
+        });
+    },
+
+    displayProductDetails : function(name){
+        this.productName.html(name);
     },
 
     switchToCreatePlanView: function(){
-        navigation.navigateToPath("/view/create_nutrition_plan/create_nutrition_plan.html");
+        navigation.navigateToPathWithResult("/view/create_nutrition_plan/create_nutrition_plan.html",{
+            ndbno : controller.productId,
+            name : controller.productItemName,
+            quantity : controller.quantity.val(),
+            calories : controller.caloriesValue
+        });
+    },
+
+    showLoader: function () {
+        $('.preloader-background').fadeIn();
+    },
+
+    hideLoader: function () {
+        $('.preloader-background').fadeOut('slow');
     }
 
 };

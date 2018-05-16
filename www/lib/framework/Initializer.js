@@ -9,12 +9,18 @@ firebase.initializeApp({
     messagingSenderId: "788592610510"
 });
 
-localStorage.removeItem("result");
 
-arg = localStorage.getItem("argument");
+var arg = JSON.parse(localStorage.getItem("argument"));
+var result = JSON.parse(localStorage.getItem("result"));
+
+console.log("navigateToPath arg = " + arg);
 
 controller.onCreate(arg);
+if(typeof controller.onResult === 'function') {
+    controller.onResult(result);
+}
 
+localStorage.removeItem("result");
 localStorage.setItem("argument", null);
 
 document.addEventListener('deviceready', function(){
@@ -54,9 +60,17 @@ document.addEventListener('deviceready', function(){
 
 var navigation = {
 
-    navigateToPath : function (path , argument) {
+    navigateToPath : function (path ) {
+        if (navigator.userAgent.indexOf('Android') > -1) {
+            window.open('file:///android_asset/www' + path)
+        } else {
+            window.location.href = path;
+        }
+    },
+
+    navigateToPathWithArgument : function (path , argument) {
         if(argument){
-            localStorage.setItem("argument", arg);
+            localStorage.setItem("argument", JSON.stringify(argument));
         }
         if (navigator.userAgent.indexOf('Android') > -1) {
             window.open('file:///android_asset/www' + path)
@@ -67,7 +81,7 @@ var navigation = {
 
     navigateToPathWithResult : function (path , result) {
         if(result){
-            localStorage.setItem("result", result);
+            localStorage.setItem("result", JSON.stringify(result));
         }
         if (navigator.userAgent.indexOf('Android') > -1) {
             window.open('file:///android_asset/www' + path)

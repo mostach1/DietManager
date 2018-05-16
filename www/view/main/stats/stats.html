@@ -1,24 +1,31 @@
-<body class="container">
 
-    <div class="row">
-        <h5><span class="blue-text text-darken-4">Stats</span></h5>
-    </div>
+<style type="text/css">
+    div.moniaDiv { position: fixed; bottom : 5%; width : 100%}
+    form{
+        padding:0px;
+        border-radius: 3px;
+        box-sizing: border-box;
+    }
+    gull{
+        padding: 250px;
+    }
+</style>
     <div style="align-items: flex-start">
     </div>
     <div class="row">
         <div class="container">
-            <canvas id="myChart" width="400" height="150"></canvas>
+            <div class="chart-container" style="position: relative;">
+                <canvas id="myChart"></canvas>
+            </div>
         </div>
     </div>
-    <div class="row" style="text-align: center">
-        <a class="collection-item center-align">Twoja waga :<span id="actual_weight">[weight]</span></a>
-    </div>
 
+<div class="moniaDiv">
     <div style="text-align: center" ;>
         <div class="row" style="align-items: flex-end">
+            <p class="collection-item center-align">Your actual weight : <span id="actual_weight">will show when you add first measurement</span></p>
             <a class="waves-effect waves-light btn collection-item" id="set_weight_button" style="text-align: center">Add
                 new weight measurement</a>
         </div>
     </div>
-
-</body>
+</div>
