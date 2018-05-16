@@ -1,41 +1,75 @@
 var controller = {
 
-    loginButton : null,
-    registerButton : null,
-    usernameInput : null,
-    passwordInput : null,
-    errorLabel : null,
+    loginButton: null,
+    registerButton: null,
+    usernameInput: null,
+    passwordInput: null,
+    errorLabel: null,
+    googleButton: null,
 
-    onCreate: function() { },
+    onCreate: function () {
+    },
 
-    onDeviceReady: function() {
+    onDeviceReady: function () {
         this.loginButton = $("#loginbtn");
         this.registerButton = $("#registerbtn");
         this.usernameInput = $("#login_input");
         this.passwordInput = $("#password_input");
         this.errorLabel = $("#errorlabel");
+        this.googleButton = $("#googlebtn");
 
         this.loginButton.click(this.onLoginClicked.bind(this));
         this.registerButton.click(this.navigateToRegister.bind(this));
+        this.googleButton.click(this.onGoogleSignInClicked.bind(this));
+
+        controller.showLoader();
+        firebase.auth().getRedirectResult().then(function (result) {
+            controller.hideLoader();
+            if (result.user) {
+                controller.navigateToMain();
+            }
+        }).catch(function (error) {
+            controller.hideLoader();
+            controller.errorLabel.text(error.code + ":" + error.message);
+        });
+
     },
 
     onLoginClicked: function () {
         var email = this.usernameInput.val();
         var password = this.passwordInput.val();
         console.log("login:" + email + " pass:" + password);
+        controller.showLoader();
         firebase.auth().signInWithEmailAndPassword(email, password).then(function (result) {
+            controller.hideLoader();
             controller.navigateToMain();
-        }).catch(function(error) {
+        }).catch(function (error) {
+            controller.hideLoader();
             controller.errorLabel.text(error.code + ":" + error.message);
         });
     },
 
+    onGoogleSignInClicked: function () {
+        var provider = new firebase.auth.GoogleAuthProvider();
+        provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
+        console.log("signInWithRedirect");
+        firebase.auth().signInWithRedirect(provider);
+    },
+
     navigateToRegister: function () {
-        navigation.navigateToPath(  "/view/register/register.html" );
+        navigation.navigateToPath("/view/register/register.html");
     },
 
     navigateToMain: function () {
-        navigation.navigateToPath( "/view/main/main.html" );
+        navigation.navigateToPath("/view/main/main.html");
+    },
+
+    showLoader: function () {
+        $('.preloader-background').fadeIn();
+    },
+
+    hideLoader: function () {
+        $('.preloader-background').fadeOut('slow');
     }
 
 };
