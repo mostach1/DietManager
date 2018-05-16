@@ -19,6 +19,24 @@ var dashboardFragment = {
     onCreate: function() { },
 
     onDeviceReady: function() {
+        firebase.auth().onAuthStateChanged(function (user) {
+            console.log(user.uid);
+            firebase.database().ref('diet_offers').once('value').then(function(snapshot) {
+                var item = snapshot.val();
+                controller.hideLoader();
+                profileFragment.test_label.html(snapshot.val());
+                dashboardFragment.dietName2.html(item["2"].dietName);
+                dashboardFragment.dietDescription2.html(item["2"].dietDescription);
+                dashboardFragment.dietName1.html(item["1"].dietName);
+                dashboardFragment.dietDescription1.html(item["1"].dietDescritpion);
+                dashboardFragment.dietName3.html(item["3"].dietName);
+                dashboardFragment.dietDescription3.html(item["3"].dietDescription);
+                dashboardFragment.dietName4.html(item["4"].dietName);
+                dashboardFragment.dietDescription4.html(item["4"].dietDescription);
+                dashboardFragment.dietName5.html(item["5"].dietName);
+                dashboardFragment.dietDescription5.html(item["5"].dietDescription);
+            });
+        });
         this.navigateToPlanDetailsView1 = $("#plan_details_view_1"),
         this.navigateToPlanDetailsView2 = $("#plan_details_view_2"),
         this.navigateToPlanDetailsView3 = $("#plan_details_view_3"),
@@ -56,24 +74,6 @@ var dashboardFragment = {
         this.navigateToPlanDetailsView4.click(this.navigateToFourthPlanDetails.bind(this));
         this.navigateToPlanDetailsView5.click(this.navigateToFifthPlanDetails.bind(this));
 
-        firebase.auth().onAuthStateChanged(function (user) {
-            profileFragment.profile_name.html(user.uid);
-            console.log(user.uid);
-            firebase.database().ref('diet_offers').once('value').then(function(snapshot) {
-                var item = snapshot.val();
-                profileFragment.test_label.html(snapshot.val());
-                dashboardFragment.dietName2.html(item["2"].dietName);
-                dashboardFragment.dietDescription2.html(item["2"].dietDescription);
-                dashboardFragment.dietName1.html(item["1"].dietName);
-                dashboardFragment.dietDescription1.html(item["1"].dietDescritpion);
-                dashboardFragment.dietName3.html(item["3"].dietName);
-                dashboardFragment.dietDescription3.html(item["3"].dietDescription);
-                dashboardFragment.dietName4.html(item["4"].dietName);
-                dashboardFragment.dietDescription4.html(item["4"].dietDescription);
-                dashboardFragment.dietName5.html(item["5"].dietName);
-                dashboardFragment.dietDescription5.html(item["5"].dietDescription);
-            });
-        });
 
     },
 
@@ -106,6 +106,15 @@ var dashboardFragment = {
         localStorage.removeItem("diet_offer_ID");
         localStorage.setItem("diet_offer_ID", "5");
         navigation.navigateToPath("/view/plan_details/plan_details.html");
+    },
+
+    showLoader: function () {
+        $('.preloader-background').fadeIn();
+    },
+
+    hideLoader: function () {
+        $('.preloader-background').fadeOut('slow');
     }
+
 
 };
