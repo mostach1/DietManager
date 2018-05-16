@@ -20,8 +20,13 @@
     <script type="text/javascript" src="../../lib/framework/Initializer.js"></script>
 
     <style type="text/css">
-        #product_card{
+        #product_card {
             height: 50px;
+        }
+        #search_icon{
+            height: 20px;
+            width: auto;
+            margin-left: 20px;
         }
     </style>
 </head>
@@ -29,10 +34,14 @@
 <div class="container">
 
     <p class="center-align">Add product</p>
-
-    <div class="input-field" id="type_product">
-        <input id="type_product_input" type="text" class="validate">
-        <label for="type_product">Enter product name</label>
+    <div class="row">
+        <div class="col s8 input-field" id="type_product">
+            <input id="type_product_input" type="text" class="validate">
+            <label for="type_product">Enter product name</label>
+        </div>
+        <div class="col s4" id="search_button">
+            <img id="search_icon"> <!-- alt="" class="responsive-img" -->
+        </div>
     </div>
 
     <div class="col s12 m8 offset-m2 l6 offset-l3" id="product_card">
