@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-
-    <meta http-equiv="Content-Security-Policy"
-          content="default-src 'self' www.googleapis.com:8080 fonts.googleapis.com:8080  data: gap: https://ssl.gstatic.com 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; connect-src *">
     <meta name="format-detection" content="telephone=no">
     <meta name="msapplication-tap-highlight" content="no">
     <meta name="viewport"
@@ -27,6 +24,18 @@
             height: 20px;
             width: auto;
             margin-left: 20px;
+        .preloader-background {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #eee;
+
+            position: fixed;
+            z-index: 100;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
         }
     </style>
 </head>
@@ -49,6 +58,23 @@
             <img id="search_icon"> <!-- alt="" class="responsive-img" -->
         </div>
 >>>>>>> jakub
+    </div>
+
+
+    <div class="preloader-background">
+        <div class="preloader-wrapper big active">
+            <div class="spinner-layer spinner-blue-only">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div>
+                <div class="gap-patch">
+                    <div class="circle"></div>
+                </div>
+                <div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="col s12 m8 offset-m2 l6 offset-l3" id="product_card">
