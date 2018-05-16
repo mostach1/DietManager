@@ -12,7 +12,7 @@ var dietFragment = {
          this.createYourOwnBtn.click(this.switchToPlanCreation);
          if (navigator.userAgent.indexOf('Android') > -1)
          {
-             document.getElementById('obrazek').src = "file:///android_asset/www/img/sad_emoji.jpg";
+             document.getElementById('obrazek').src = "file:///android_asset/www/img/sad_emoji.png";
          }
          else {
              document.getElementById('obrazek').src = "../../www/img/sad_emoji.png";
