@@ -20,10 +20,11 @@
         #product_card {
             height: 50px;
         }
-        #search_icon{
+        #search_icon {
             height: 20px;
             width: auto;
             margin-left: 20px;
+        }
         .preloader-background {
             display: flex;
             align-items: center;
@@ -70,21 +71,12 @@
         </div>
     </div>
 
-    <div class="col s12 m8 offset-m2 l6 offset-l3" id="product_card">
-        <div class="card-panel grey lighten-5 z-depth-1">
-            <div class="row valign-wrapper">
-                <div class="col s4">
-                    <img id="obrazek" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
-                </div>
-                <div class="col s8">
-                  <span class="black-text">
-                      <p class="center-align" id="clickable_product"><h5>Jajko</h5></p> 68kcal/100g
-                  </span>
-                </div>
-            </div>
-        </div>
-    </div>
+    <ul id="product_items_list" class="collection with-header">
 
+        <li class="collection-item"><div>Alvin<a href="#!" class="secondary-content"><i class="material-icons">send</i></a></div></li>
+        <li class="collection-item"><div>Alvin<a href="#!" class="secondary-content"><i class="material-icons">send</i></a></div></li>
+        <li class="collection-item"><div>Alvin<a href="#!" class="secondary-content"><i class="material-icons">send</i></a></div></li>
+    </ul>
 
 </div>
 

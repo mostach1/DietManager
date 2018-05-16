@@ -4,6 +4,7 @@ var controller = {
     productCard: null,
     searchButton : null,
     typeProductInput : null,
+    productItemsList : null,
 
     onCreate: function() { },
 
@@ -11,30 +12,25 @@ var controller = {
         this.productCard = $("#product_card");
         this.searchButton = $("#search_button");
         this.typeProductInput = $("#type_product_input");
+        this.productItemsList = $("#product_items_list");
         this.productCard.click(this.navigateToProductDetail);
-        if (navigator.userAgent.indexOf('Android') > -1)
-        {
-            document.getElementById('obrazek').src = "file:///android_asset/www/img/jajko.png";
+        controller.hideLoader();
+        if (navigator.userAgent.indexOf('Android') > -1) {
             document.getElementById('search_icon').src = "file:///android_asset/www/img/search.png";
-        }
-        else {
-            document.getElementById('obrazek').src = "../../www/img/jajko.png";
+        } else {
             document.getElementById('search_icon').src = "../../www/img/search.png";
         }
 
         this.searchButton.click(this.requestSearchProducts.bind(this));
-
-
-    /*$.each( data.items, function( i, item ) {
-        $( "<img>" ).attr( "src", item.media.m ).appendTo( "#images" );
-        if ( i === 3 ) {
-          return false;
-        }
-      });*/
+        this.displayProductsList([]);
     },
-        navigateToProductDetail: function () {
-            navigation.navigateToPath("/view/product_detail/product_detail.html");
-        },
+
+    navigateToProductDetail: function ( ndbno , name ) {
+        navigation.navigateToPathWithArgument("/view/product_detail/product_detail.html", {
+            ndbno : ndbno,
+            name : name
+        });
+    },
 
     requestSearchProducts : function (){
         var queryString = this.typeProductInput.val();
@@ -53,7 +49,20 @@ var controller = {
     },
 
     displayProductsList : function ( data ){
-
+        this.productItemsList.empty();
+        if(data){
+            for(var i = 0 ; i < data.length ; i++){
+                this.productItemsList.append("<li class=\"collection-item\">" +
+                    "<div>"+data[i].name+"<a data-id='"+data[i].ndbno+"'  href=\"#!\" class=\"secondary-content\"><i class=\"material-icons\">add</i></a></div>" +
+                    "</li>");
+            }
+            $("#product_items_list li a").click(function (event) {
+                var view = $(event.currentTarget);
+                var ndbno = view.attr("data-id");
+                var data = view.attr("data-id");
+                controller.navigateToProductDetail(ndbno,data);
+            });
+        }
     },
 
     navigateToMain: function () {
