@@ -26,6 +26,5 @@ var dietFragment = {
 
      switchToPlanCreation: function(){
          navigation.navigateToPath("/view/create_nutrition_plan/create_nutrition_plan.html");
-        window.location.href = '/view/create_nutrition_plan/create_nutrition_plan.html';
      }
 };
