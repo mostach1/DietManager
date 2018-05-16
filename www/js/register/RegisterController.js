@@ -31,7 +31,11 @@ var controller = {
     },
 
     navigateToLogin: function () {
-        navigation.navigateToPath( "/view/login/login.html" );
+        navigation.navigateToPath("/view/login/login.html");
+    },
+
+    navigateToMain: function () {
+        navigation.navigateToPath("/view/main/main.html");
     },
 
     navigateToMain: function () {
