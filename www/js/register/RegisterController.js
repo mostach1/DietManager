@@ -16,7 +16,6 @@ var controller = {
         this.passwordInput = $("#password_input");
         this.errorLabel = $("#errorlabel");
         this.passwordRetypeInput = $("#password_retype_input");
-
         this.registerButton.click(this.onRegisterClicked.bind(this));
         this.loginButton.click(this.navigateToLogin.bind(this));
     },
