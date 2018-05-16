@@ -2,10 +2,14 @@
 <html>
 <head>
     <style type="text/css">
+        div.myDiv { position: fixed; bottom : 0; width : 100%};
         form{
             padding:0px;
             border-radius: 3px;
             box-sizing: border-box;
+        }
+        gull{
+            padding: 250px;
         }
     </style>
     <meta name="format-detection" content="telephone=no">
@@ -26,37 +30,45 @@
 
 <body>
 
-<form>
-<div class="row" style="text-align: center">
-    <a style="text-align: center">Please insert your actual weight</a>
-    <div class="input-field">
-        <input id="input_weight" type="text" data-length="10" style="text-align: center">
-        <label for="input_weight" style="text-align: center">Input weight field</label>
+<div class="container">
+    <ul>
+
+<div class="row">
+    <a style="align-items: center">Please insert your actual weight</a>
+    <div class="input-field " style="align-items: center">
+        <input id="input_weight" type="text" data-length="10"  required>
+        <label for="input_weight">Input weight field</label>
 
     </div>
 </div>
-<div class ="row" style="text-align: center">
-    <div class="input-field">
-        <input type="text" class="datepicker" id="date_input" style="text-align: center">
-        <label for="date_input" style="text-align: center"><!--<i class="material-icons left">data_range</i>-->Input data field</label>
 
+        <li>
+<div class ="row">
+    <div class="input-field " style="align-items: center">
+
+        <input type="text" class="datepicker" id="date_input" required>
+        <label for="date_input" style="align-items: center">Input data field</label>
         <script type="application/javascript">
             $(document).ready(function(){
-                $('.datepicker').datepicker({format: 'yy-mm-dd'});
+                $('.datepicker').datepicker({format: 'dd-mmm-yy'});
 
             });
         </script>
 
     </div>
+
 </div>
-</form>
+        </li>
+    </ul>
+</div>
+<div class="myDiv">
+<div class="row" style="text-align: center" >
+    <a class="waves-effect waves-light btn" id="add_new_weight" type="submit">Add new weight measurement</a>
+</div>
 <div class="row" style="text-align: center">
-    <a class="waves-effect waves-light btn" id="add_new_weight" >Add new weight measurement</a>
-</div>
-<div class="row">
     <a class="waves-effect waves-light btn collection-item" id="back_button" >Back to main page</a>
 </div>
-
+</div>
 
 </body>
 </html>

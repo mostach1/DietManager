@@ -1,11 +1,52 @@
-<div>
-
+<!DOCTYPE html>
+<html>
+<body>
+<div class="row">
     <ul class="collection">
-        <li class="collection-item center-align">Profile</li>
-        <li class="collection-item center-align"><span id="profile_name">[name]</span></li>
-        <li class="collection-item center-align"><span id="test_label">[test]</span></li>
-        <a id="logout_btn" href="#" class="collection-item">Logout</a>
-        <a id="add_btn" href="#" class="collection-item">ADD</a>
+        <li class="collection-item center-align">MyProfile</li>
+        <div class="row">
+        <li class="collection-item center-align">
+            <div class="input-field col s12">
+                <select ng-model="getValue" id = "mySelectID">
+                    <option value="" disabled selected>None</option>
+                    <option value="1">Vegetarian</option>
+                    <option value="2">Vegan</option>
+                    <option value="3">Gluten Free</option>
+                    <option value="4">None</option>
+                </select>
+                <label>Select preference</label>
+            </div>
+        </li>
+        </div>
+        <div class="row">
+            <li class="collection-item center-align">
+            <div id="vegetarianDiv"  style="display:none;" class="answer_list" > <div class="card-panel">
+                <span class="blue-text text-darken-2">Click here and check our vegetarian diet</span></div></div>
+            <div id="veganDiv" style="display:none;" class="answer_list"><div class="card-panel">
+                <span class="blue-text text-darken-2">Click here and check our vegan diet</span></div></div>
+            <div id="glutenFreeDiv"  style="display:none;" class="answer_list" ><div class="card-panel">
+                <span class="blue-text text-darken-2">Click here and check our glutenFree diet</span></div></div>
+            </li>
+        </div>
+        <li class="collection-item center-align">
+    <div class="row">
+            <div class="switch">
+                <h7>Notification Switch</h7><br>
+                <label>
+                    Off
+                    <input id="my-switch" ng-click="isSwitchedOn = !isSwitchedOn" ng-checked="isSwitchedOn" type="checkbox">
+                    <span class="lever"></span>
+                    On
+                </label>
+            </div>
+    </div>
+        </li>
+        <li class="collection-item center-align">
+    <div class="row">
+    <a id="logout_btn" href="#" class="collection-item">Logout</a>
+    </div>
+        </li>
     </ul>
-
 </div>
+</body>
+</html>
