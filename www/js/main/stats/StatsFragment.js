@@ -19,7 +19,7 @@ var statsFragment = {
                     data: {
                         labels: [],
                         datasets: [{
-                            label: '# of Votes',
+                            label: 'graph of your weight',
                             data: [],
                             backgroundColor: [],
                             borderColor: [],
