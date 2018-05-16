@@ -28,9 +28,7 @@ var profileFragment = {
                 });
             }
         });
-
     },
-
     onClickedLogout : function () {
         firebase.auth().signOut().then(function() {
             profileFragment.navigateToLogin();
