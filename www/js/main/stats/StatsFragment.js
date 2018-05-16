@@ -38,13 +38,27 @@ var statsFragment = {
                 };
 
                 var object = snapshot.val();
-                for (x in object) {
-                    var day = object[x];
+                var array = $.map(object, function(value, index) {
+                    return [value];
+                });
+                function compare(a,b) {
+                    if (a.date < b.date)
+                        return -1;
+                    if (a.date > b.date)
+                        return 1;
+                    return 0;
+                }
+
+                array.sort(compare);
+                console.log(array);
+                for(var i=0;i<array.length;i++) {
+                    var day = array[i];
                     chartData.data.labels.push(day.date);
                     chartData.data.datasets[0].data.push(day.weight);
                     chartData.data.datasets[0].backgroundColor.push('rgba(255, 99, 132, 0.2)');
                     chartData.data.datasets[0].borderColor.push('rgba(255,99,132,1)');
                     statsFragment.actual_weight.html(day.weight);
+
                 }
 
                 var ctx = document.getElementById("myChart").getContext("2d");
