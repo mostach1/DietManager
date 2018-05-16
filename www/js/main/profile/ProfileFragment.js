@@ -31,19 +31,6 @@ var profileFragment = {
 
     },
 
-        firebase.auth().onAuthStateChanged(function (user) {
-            if(!user){
-                profileFragment.navigateToLogin();
-            }else {
-                profileFragment.profile_name.html(user.uid);
-                console.log(user.uid);
-                firebase.database().ref('test_data').once('value').then(function (snapshot) {
-                    profileFragment.test_label.html(snapshot.val());
-                    console.log(snapshot.val());
-                });
-            }
-        });
-    },
     onClickedLogout : function () {
         firebase.auth().signOut().then(function() {
             profileFragment.navigateToLogin();

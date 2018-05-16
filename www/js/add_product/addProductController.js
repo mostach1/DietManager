@@ -1,12 +1,16 @@
 var controller = {
 
     searchApiKey : "z9HfGMQzfhQBmeD6UvasVWC3Azf0e9lgbaqbz19K",
+    productCard: null,
+    searchButton : null,
+    typeProductInput : null,
 
-            productCard: null,
     onCreate: function() { },
 
     onDeviceReady: function() {
         this.productCard = $("#product_card");
+        this.searchButton = $("#search_button");
+        this.typeProductInput = $("#type_product_input");
         this.productCard.click(this.navigateToProductDetail);
         if (navigator.userAgent.indexOf('Android') > -1)
         {
@@ -17,6 +21,10 @@ var controller = {
             document.getElementById('obrazek').src = "../../www/img/jajko.png";
             document.getElementById('search_icon').src = "../../www/img/search.png";
         }
+
+        this.searchButton.click(this.requestSearchProducts.bind(this));
+
+
     /*$.each( data.items, function( i, item ) {
         $( "<img>" ).attr( "src", item.media.m ).appendTo( "#images" );
         if ( i === 3 ) {
@@ -28,7 +36,8 @@ var controller = {
             navigation.navigateToPath("/view/product_detail/product_detail.html");
         },
 
-    requestSearchProducts : function ( queryString ){
+    requestSearchProducts : function (){
+        var queryString = this.typeProductInput.val();
         controller.showLoader();
         $.getJSON( "https://api.nal.usda.gov/ndb/search/?format=json&q="+queryString+"&sort=n&max=25&offset=0&api_key=" + controller.searchApiKey, function(data) {
             controller.hideLoader();

@@ -15,6 +15,8 @@ arg = localStorage.getItem("argument");
 
 controller.onCreate(arg);
 
+localStorage.setItem("argument", null);
+
 document.addEventListener('deviceready', function(){
     controller.onDeviceReady();
     $("div[data-fragment]").get().forEach(item => {
@@ -55,6 +57,17 @@ var navigation = {
     navigateToPath : function (path , argument) {
         if(argument){
             localStorage.setItem("argument", arg);
+        }
+        if (navigator.userAgent.indexOf('Android') > -1) {
+            window.open('file:///android_asset/www' + path)
+        } else {
+            window.location.href = path;
+        }
+    },
+
+    navigateToPathWithResult : function (path , result) {
+        if(result){
+            localStorage.setItem("result", result);
         }
         if (navigator.userAgent.indexOf('Android') > -1) {
             window.open('file:///android_asset/www' + path)
