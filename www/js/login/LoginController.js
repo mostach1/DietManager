@@ -6,6 +6,7 @@ var controller = {
     passwordInput: null,
     errorLabel: null,
     googleButton: null,
+    facebookbtn : null,
 
     onCreate: function () {
     },
@@ -17,10 +18,12 @@ var controller = {
         this.passwordInput = $("#password_input");
         this.errorLabel = $("#errorlabel");
         this.googleButton = $("#googlebtn");
+        this.facebookbtn = $("#facebookbtn");
 
         this.loginButton.click(this.onLoginClicked.bind(this));
         this.registerButton.click(this.navigateToRegister.bind(this));
         this.googleButton.click(this.onGoogleSignInClicked.bind(this));
+        this.facebookbtn.click(this.onFacebookSignInClicked.bind(this));
 
         controller.showLoader();
         firebase.auth().getRedirectResult().then(function (result) {
@@ -52,7 +55,14 @@ var controller = {
     onGoogleSignInClicked: function () {
         var provider = new firebase.auth.GoogleAuthProvider();
         provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
-        console.log("signInWithRedirect");
+        console.log("onGoogleSignInClicked");
+        firebase.auth().signInWithRedirect(provider);
+    },
+
+    onFacebookSignInClicked : function (){
+        var provider = new firebase.auth.FacebookAuthProvider();
+        provider.addScope('email');
+        console.log("onFacebookSignInClicked");
         firebase.auth().signInWithRedirect(provider);
     },
 
