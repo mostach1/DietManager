@@ -19,7 +19,6 @@ var controller = {
         this.errorLabel = $("#errorlabel");
         this.googleButton = $("#googlebtn");
         this.facebookbtn = $("#facebookbtn");
-
         this.loginButton.click(this.onLoginClicked.bind(this));
         this.registerButton.click(this.navigateToRegister.bind(this));
         this.googleButton.click(this.onGoogleSignInClicked.bind(this));

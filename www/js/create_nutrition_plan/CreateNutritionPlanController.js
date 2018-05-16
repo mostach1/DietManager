@@ -33,7 +33,7 @@ var controller = {
     },
 
     navigateToAddProduct: function (dayNumber) {
-        window.location.href = "/view/add_product/add_product.html";
+        navigation.navigateToPath("/view/add_product/add_product.html");
     },
 
     displayProducts: function (view, data) {

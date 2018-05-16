@@ -178,7 +178,7 @@ var controller = {
             }
             else {
                 firebase.database().ref('test/' + userId).set({
-                    dietId: dietID
+                    dietIds: dietID
                 });
             }
         });
