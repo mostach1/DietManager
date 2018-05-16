@@ -36,6 +36,10 @@ var controller = {
 
     navigateToMain: function () {
         navigation.navigateToPath("/view/main/main.html");
+    },
+
+    navigateToMain: function () {
+        navigation.navigateToPath( "/view/main/main.html" );
     }
 
 };
