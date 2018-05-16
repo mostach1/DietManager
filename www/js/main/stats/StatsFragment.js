@@ -1,12 +1,13 @@
 var statsFragment = {
     navigateButton: null,
+    actual_weight: null,
     onCreate: function () {
     },
 
     onDeviceReady: function () {
         this.navigateButton = $("#set_weight_button");
         this.navigateButton.click(this.navigateToAddWeight.bind(this));
-
+        this.actual_weight=$('#actual_weight');
         firebase.auth().onAuthStateChanged(function (user) {
             console.log(user.uid);
             var userId = firebase.auth().currentUser.uid;
@@ -42,7 +43,8 @@ var statsFragment = {
                     chartData.data.labels.push(day.date);
                     chartData.data.datasets[0].data.push(day.weight);
                     chartData.data.datasets[0].backgroundColor.push('rgba(255, 99, 132, 0.2)');
-                    chartData.data.datasets[0].borderColor.push('rgba(255, 99, 132, 0.2)');
+                    chartData.data.datasets[0].borderColor.push('rgba(255,99,132,1)');
+                    statsFragment.actual_weight.html(day.weight);
                 }
 
                 var ctx = document.getElementById("myChart").getContext("2d");
@@ -51,7 +53,27 @@ var statsFragment = {
             });
         });
 
+       /* firebase.auth().onAuthStateChanged(function (user) {
+
+            var userId = firebase.auth().currentUser.uid;
+            var ref = firebase.database().ref('weight/' + userId);
+            ref.once('value').then(function (snapshot) {
+
+                var object1 = snapshot.val();
+                var list;
+                for(x in object1) {
+                    var day = object1[x];
+                    console.log(object1[x]);
+
+                       console.log(day.weight);
+
+                }
+
+            });
+        });*/
+
     },
+
     navigateToAddWeight: function () {
         navigation.navigateToPath("/view/add_weight/addWeight.html");
     }
