@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta http-equiv="Content-Security-Policy"
+          content="default-src 'self' www.googleapis.com:8080 fonts.googleapis.com:8080  data: gap: https://ssl.gstatic.com 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; connect-src *">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport"
+          content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="../../lib/materialize/materialize.min.css" media="screen,projection"/>
+
+    <script type="text/javascript" src="../../lib/jquery/jquery-3.3.1.min.js"></script>
+    <script src="../../lib/firebase/firebase.js"></script>
+    <script type="text/javascript" src="../../cordova.js"></script>
+    <script src="../../lib/materialize/materialize.min.js"></script>
+    <script type="text/javascript" src="../../js/my_nutrition_plan/MyNutritionPlanController.js"></script>
+
+    <script type="text/javascript" src="../../lib/framework/Initializer.js"></script>
+
+    <style type="text/css">
+
+        #day_row {
+            margin-top: 40px;
+        }
+
+        #breakfast_row {
+            margin-top: 40px;
+            padding: 0px;
+        }
+
+        #next_day_button {
+            margin-top: 40px;
+            padding: 0px;
+            width: 250px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <p class="center-align">My Nutrition Plan</p>
+
+    <div id="day_name"></div>
+
+    <div class="row" id="breakfast_row">
+        <div class="col s10 valign-wrapper"><h6>BREAKFAST</h6></div>
+    </div>
+
+    <div id="breakfast_products">
+
+    </div>
+
+    <div class="row" id="breakfast_row">
+        <div class="col s10 valign-wrapper"><h6>2ND BREAKFAST</h6></div>
+    </div>
+
+    <div id="second_breakfast_products">
+
+    </div>
+
+    <div class="row" id="breakfast_row">
+        <div class="col s10 valign-wrapper"><h6>LUNCH</h6></div>
+    </div>
+
+    <div id="lunch_products">
+
+    </div>
+
+    <div class="row" id="breakfast_row">
+        <div class="col s10 valign-wrapper"><h6>DINNER</h6></div>
+    </div>
+
+    <div id="dinner_products">
+
+    </div>
+
+    <div class="row" id="breakfast_row">
+        <div class="col s10 valign-wrapper"><h6>SUPPER</h6></div>
+    </div>
+
+    <div id="supper_products">
+
+    </div>
+
+    <p class="center-align"><a class="waves-effect red darken-1 btn" id="next_day_button">NEXT DAY</a></p>
+</div>
+</body>
+
+</html>

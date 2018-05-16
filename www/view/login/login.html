@@ -1,8 +1,8 @@
+
 <!DOCTYPE html>
 <html>
 <head>
 
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' www.googleapis.com:8080 fonts.googleapis.com:8080  data: gap: https://ssl.gstatic.com 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; connect-src *">
     <meta name="format-detection" content="telephone=no">
     <meta name="msapplication-tap-highlight" content="no">
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
@@ -12,12 +12,25 @@
 
 
     <style type="text/css">
+        .preloader-background {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #eee;
+
+            position: fixed;
+            z-index: 100;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
         #panell{
             margin-top: 100px;
             padding: 0px;
         }
         #loginbtn{
-            float: right;
+            width: 250px;
             margin-bottom: 10px;
             margin-right: 10px;
         }
@@ -51,12 +64,27 @@
 </head>
 <body>
 
+    <div class="preloader-background">
+        <div class="preloader-wrapper big active">
+            <div class="spinner-layer spinner-blue-only">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div>
+                <div class="gap-patch">
+                    <div class="circle"></div>
+                </div>
+                <div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="container">
         <div class="row">
 
-            <div class="col s6 offset-s3 z-depth-1" id="panell">
+            <div id="panell">
                 <form>
-
                     <div class="input-field" id="username">
                         <input id="login_input" type="text" class="validate">
                         <label for="username">Username</label>
@@ -66,18 +94,24 @@
                         <label for="password">Password</label>
                     </div>
 
-                    <a class="waves-effect waves-light btn" id="loginbtn">Sign in</a>
+                    <p class="center-align"><a class="waves-effect waves-light btn" id="loginbtn">Sign in</a></p>
 
-                   Don't have an account? <a class="waves-effect waves-green btn-flat" id="registerbtn">Sign up</a>
+                    <p class="center-align">Don't have an account? </p>
+                    <p class = "center-align"><a class="waves-effect waves-green btn-flat" id="registerbtn">Sign up</a></p>
 
                     <p id="errorlabel" class="red-text" ></p>
 
+                    <a class="waves-effect waves-green btn-flat" id="googlebtn">Google +</a>
+
+                    <a class="waves-effect waves-green btn-flat" id="facebookbtn">Facebook</a>
                 </form>
 
             </div>
         </div>
 
     </div>
+
+
 
 
 </body>

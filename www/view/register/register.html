@@ -16,8 +16,8 @@
             margin-top: 100px;
             padding: 0px;
         }
-        #loginbtn{
-            float: right;
+        #loginbtn,#registerbtn{
+            width: 250px;
             margin-bottom: 10px;
             margin-right: 10px;
         }
@@ -32,7 +32,7 @@
             border-radius: 3px;
             box-sizing: border-box;
         }
-        #username,#password{
+        #username,#password,#password_retype{
             margin-left: 20px;
             margin-right: 20px;
         }
@@ -54,7 +54,7 @@
 <div class="container">
     <div class="row">
 
-        <div class="col s6 offset-s3 z-depth-1" id="panell">
+        <div id="panell">
             <form>
 
                 <div class="input-field" id="username">
@@ -70,9 +70,12 @@
                     <label for="password_retype">Repeat password</label>
                 </div>
 
-                Have an account? <a class="waves-effect waves-green btn-flat" id="loginbtn">Sign in</a>
+                <p class = "center-align"><a class="waves-effect waves-light btn" id="registerbtn">Sign up</a></p>
 
-                <a class="waves-effect waves-light btn" id="registerbtn">Sign up</a>
+                <p class = "center-align">Already have an account? </p>
+                <p class = "center-align"><a class="waves-effect waves-green btn-flat" id="loginbtn">Sign in</a></p>
+
+
 
                 <p id="errorlabel" class="red-text" ></p>
 

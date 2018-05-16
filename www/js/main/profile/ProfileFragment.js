@@ -53,22 +53,18 @@ var profileFragment = {
 
         });
 
-        var x = $('#mySelectID').val();
-        var e = document.getElementById("mySelectID");
-        var val1 = e.options[e.selectedIndex].value;
-        console.log(val1);
-        console.log("eloelo");
-        console.log(x);
-        console.log("eloelo2");
-
         firebase.auth().onAuthStateChanged(function (user) {
-            console.log(user.uid);
-            var userId = firebase.auth().currentUser.uid;
-            firebase.database().ref('test/' + userId).once('value').then(function(snapshot) {
-                var item = snapshot.val();
-                profileFragment.profile_name.html(item.email);
-                console.log(snapshot.val());
-            });
+            if(!user){
+                profileFragment.navigateToLogin();
+            }else {
+                profileFragment.profile_name.html(user.uid);
+                console.log(user.uid);
+                firebase.database().ref('test_data').once('value').then(function (snapshot) {
+                    profileFragment.test_label.html(snapshot.val());
+                    console.log(snapshot.val());
+                });
+            }
+
         });
 
     },
