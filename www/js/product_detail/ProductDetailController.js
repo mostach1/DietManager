@@ -17,7 +17,7 @@ var controller = {
     },
 
     switchToCreatePlanView: function(){
-        window.location.href = '/view/create_nutrition_plan/create_nutrition_plan.html';
+        navigation.navigateToPath("/view/create_nutrition_plan/create_nutrition_plan.html");
     }
 
 };

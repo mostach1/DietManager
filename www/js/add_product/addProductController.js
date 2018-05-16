@@ -7,7 +7,7 @@ var controller = {
     },
 
     navigateToMain: function () {
-        window.location.href = "/view/main/main.html";
+        navigation.navigateToPath("/view/main/main.html");
     }
 
 };
