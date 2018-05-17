@@ -176,8 +176,13 @@ var controller = {
 
         firebase.database().ref('test/' + userId).once('value').then(function (snapshot) {
             var item = snapshot.val();
-            var dietFromdb = item.dietIds;
-            console.log(dietFromdb);
+            if(item == null)
+            {
+                var dietFromdb = 9999;
+            }
+            else {
+                var dietFromdb = item.dietIds;
+            }
             if (dietFromdb == dietID) {
                 document.getElementById('mssDiv').style.display = "block";
             }

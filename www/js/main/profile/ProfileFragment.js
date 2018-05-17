@@ -4,6 +4,9 @@ var profileFragment = {
     addButton : null,
     test_label : null,
     profile_name : null,
+    navigateToPlanVege : null,
+    navigateToPlanVegan : null,
+    navigateToPlanDGluten : null,
 
     onCreate: function() { },
 
