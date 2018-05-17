@@ -53,6 +53,23 @@ var profileFragment = {
 
         });
 
+        $(document).ready(function() {
+            $("input").change(function() {
+                if($(this).is(":checked")) {
+                    console.log("Is checked");
+                    cordova.plugins.notification.local.schedule({
+                        id: 1,
+                        text: 'It is a proper time for eating',
+                        every: 'minute',
+                        data: { key:'value' }
+                    });
+                }
+                else {
+                    console.log("Is Not checked");
+                }
+            })
+        });
+
         firebase.auth().onAuthStateChanged(function (user) {
             if(!user){
                 profileFragment.navigateToLogin();
