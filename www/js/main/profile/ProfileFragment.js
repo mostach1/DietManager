@@ -57,12 +57,12 @@ var profileFragment = {
             $("input").change(function() {
                 if($(this).is(":checked")) {
                     console.log("Is checked");
-                    cordova.plugins.notification.local.schedule({
-                        id: 1,
-                        text: 'It is a proper time for eating',
-                        every: 'minute',
-                        data: { key:'value' }
-                    });
+                    //cordova.plugins.notification.local.schedule({
+                      //  id: 1,
+                       // text: 'It is a proper time for eating',
+                       // every: 'minute',
+                       // data: { key:'value' }
+                    //});
                 }
                 else {
                     console.log("Is Not checked");
